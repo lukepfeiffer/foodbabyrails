@@ -30,18 +30,23 @@
         %thead.thead-light
           %tr
             %th Org
-            %th When
-            %th Location
             %th Food Type
+            %th Location
             %th Restrictions
         %tbody
-          - @events.each do |event|
+          = @events.each do |event|
             %tr
               %td= event.org_name
-              %td= "#{event.date.try(:strftime, "%m/%d/%y")} #{event.time.try(:strftime, "%l:%M%p")}"
-              %td= "#{event.building_name} #{event.room_number}"
               %td= event.food_type
-              %td= "#{event.vegan} #{event.vegetarian}"
+              %td= "Something #{n}"
+              %td= "Something #{20-n}"
+
+          - 20.times do |n|
+            %tr
+              %td Name
+              %td Org
+              %td= "Something #{n}"
+              %td= "Something #{20-n}"
 
   .form
     = form_for @event do |f|
@@ -75,10 +80,10 @@
           .row
             .col-md-6
               = f.label :building_name
-              = f.text_field :building_name, class: "form-control", placeholder: "686 Museum Rd, Gainesville"
+              = f.text_field :address_line_one, class: "form-control", placeholder: "686 Museum Rd, Gainesville"
             .col-md-6
               = f.label :room_number
-              = f.text_field :room_number, class: "form-control", placeholder: "E221"
+              = f.text_field :address_line_one, class: "form-control", placeholder: "E221"
       %fieldset.actions
         = f.submit "Save", class: "btn btn-primary"
   .footer-links
