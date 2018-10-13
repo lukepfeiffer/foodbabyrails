@@ -1,9 +1,9 @@
 .events
-  %h1 FoodBaby
-  
   .main-content
+    %br
+    %br
     .row
-      .form
+      .search
         = form_tag "/search" do
           .form-group
             .row
@@ -13,23 +13,21 @@
               .col-md-2
                 = label_tag :restrictions
                 = select_tag :restrictions, options_for_select(@restrictions), class: "form-control"
-              .col-md-2
+              .col-md-3
                 = label_tag :date
-                = date_field_tag :date, class: "form-control"
+                = date_field_tag :date, nil, class: "form-control"
               .col-md-2
                 = label_tag :time
                 = time_field_tag :time, nil, class: "form-control"
-              .col-md-3
-                %br
+              .col-md-2
+                = label_tag :time
                 = submit_tag :submit, class: "btn btn-primary"
 
-
-
     .row
-      .map.col-md-7
+      .map.col-md-6
         = image_tag 'sample.jpg'
-      %table.table.col-md-5
-        %thead
+      %table.table.table-light.table-hover.table-striped.col-md-6
+        %thead.thead-light
           %tr
             %th Name
             %th Org
@@ -82,3 +80,8 @@
       %fieldset.actions
         = f.submit "Save", class: "btn btn-primary"
   .footer-links
+    %br
+    %br
+    %br
+    %br
+    %br
