@@ -18,7 +18,7 @@ food = ['Pizza', 'Wings', 'Sandwiches', 'Burritos', 'Other']
     food_type: food.sample,
     vegan: [true, false].sample,
     vegetarian: [true, false].sample,
-    date: Date.today + [1, 2, 3].sample.days,
+    date: Date.today + [1, 2, -1, -2].sample.days,
     time: Time.now
   )
 end

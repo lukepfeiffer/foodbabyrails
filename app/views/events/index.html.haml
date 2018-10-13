@@ -43,10 +43,11 @@
               %td= event.food_type
               %td= "#{event.vegan} #{event.vegetarian}"
 
-
-
     :javascript
       var map;
+      var markers = "#{@markers}"
+      var size = parseInt("#{@size}", 10);
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 29.6463, lng: -82.3478},
