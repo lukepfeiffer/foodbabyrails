@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2018_10_09_125142) do
     t.string "food_type"
     t.boolean "vegan"
     t.boolean "vegetarian"
+    t.decimal "lat"
+    t.decimal "long"
     t.date "date"
     t.time "time"
   end

@@ -43,16 +43,38 @@
               %td= event.food_type
               %td= "#{event.vegan} #{event.vegetarian}"
 
+    = javascript_tag "markers = #{@events.to_json.html_safe};"
     :javascript
       var map;
-      var markers = "#{@markers}"
       var size = parseInt("#{@size}", 10);
+      var reitz = {lat: 29.6463, lng: -82.3478};
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 29.6463, lng: -82.3478},
-          zoom: 14
+          center: reitz,
+          zoom: 15
         });
+        var infowindow = new google.maps.InfoWindow({
+          content: "Some title"
+        });
+        for (var i = 0; i < markers.length; ++i) {
+          var currentMarker = markers[i];
+          var lat = parseFloat(currentMarker.lat);
+          var longitude = parseFloat(currentMarker.long)
+          var position = {lat: lat, lng: longitude};
+          var title = "<h3>" + currentMarker.food_type + ": " + currentMarker.date + " " + currentMarker.time + "</h3>";
+          var content = "Some content";
+          var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: title,
+            label: "" + (i + 1)
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.title);
+            infowindow.open(map, this);
+          });
+        }
       }
 
     %script{src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}&callback=initMap", async: true,  defer: true}

@@ -8,6 +8,8 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :food_type
       t.boolean :vegan
       t.boolean :vegetarian
+      t.decimal :lat
+      t.decimal :long
       t.date :date
       t.time :time
     end

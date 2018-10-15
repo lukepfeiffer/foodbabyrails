@@ -10,6 +10,11 @@ addresses = ['686 Museum Rd', '1064 Center Dr', '444 Newell Dr', '1885 Stadium R
 food = ['Pizza', 'Wings', 'Sandwiches', 'Burritos', 'Other']
 
 10.times do |n|
+  address =  addresses.sample + ", Gainesville, FL 32611 US"
+  coor = Geocoder.search(address).first.coordinates
+  lat = coor[0]
+  long = coor[1]
+
   Event.create(
     org_name: "Org#{n}",
     building_name: "Building#{n}",
@@ -19,6 +24,8 @@ food = ['Pizza', 'Wings', 'Sandwiches', 'Burritos', 'Other']
     vegan: [true, false].sample,
     vegetarian: [true, false].sample,
     date: Date.today + [1, 2, -1, -2].sample.days,
-    time: Time.now
+    time: Time.now,
+    lat: lat,
+    long: long
   )
 end
