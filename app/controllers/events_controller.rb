@@ -1,3 +1,5 @@
+#code for controller of events
+
 class EventsController < ApplicationController
   def index
     @event = Event.new
@@ -17,7 +19,7 @@ class EventsController < ApplicationController
       event.long = long
       event.lat = lat
     end
-
+#this saves events and creates success statements or error messages
     if event.save
       flash[:success] = "Created event!"
     else
@@ -50,6 +52,7 @@ class EventsController < ApplicationController
     )
   end
 
+#this places restrictions on the parameters of a given event
   def query_events(params)
     events = Event.where('date >= ?', Date.today)
     if params[:food].present? && params[:food] != 'Other'
