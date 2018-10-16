@@ -11,3 +11,20 @@ end
 #the deletion numbers are up there as well. Sweet.
 
 #Here's some more garbage for you. 
+#Hey hey hey. What's for dinner?
+#More garbage.
+
+#What's a banana's favorite dance move?
+#The split!
+
+#How did Ebenezer Scrooge win the football game?
+#The ghost of Christmas passed!
+
+#What's Heleln Keller's favorite color?
+#Velcro
+
+#Favorite movie?
+#Answer:
+
+#Mother's maiden name?
+#Answer:
