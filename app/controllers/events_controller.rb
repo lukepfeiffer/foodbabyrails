@@ -59,12 +59,15 @@ class EventsController < ApplicationController
 #This places restrictions on the parameters of a given event
   def query_events(params)
     events = Event.where('date >= ?', Date.today)
+    #allows for filtering of events based off of a given set of parameters
     if params[:food].present? && params[:food] != 'Other'
       events = events.where(food_type: params[:food])
     end
+    #allows for the selection of vegetarian options
     if params[:restrictions] == 'Vegetarian'
       events = events.where(vegetarian: true)
     end
+    #allows for selection of vegan options
     if params[:restrictions] == 'Vegan'
       events = events.where(vegan: true)
     end
@@ -72,9 +75,11 @@ class EventsController < ApplicationController
 #Allows the input and output parameters like time and date.
     if params[:date].present?
       date = params[:date]
+      #allows you to select the dates
       events = events.where('date >= ?', date)
     end
     if params[:time].present?
+    	#allows you to select the times
       events = events.where('time >= ?', params[:time])
     end
 
