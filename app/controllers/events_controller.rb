@@ -1,5 +1,6 @@
-#code for controller of events
+#Code for controller of events
 
+#Outlines index for the rest of the controller.
 class EventsController < ApplicationController
   def index
     @event = Event.new
@@ -19,7 +20,8 @@ class EventsController < ApplicationController
       event.long = long
       event.lat = lat
     end
-#this saves events and creates success statements or error messages
+#Saves events and creates success statements or error messages
+#based on outcome.
     if event.save
       flash[:success] = "Created event!"
     else
@@ -28,7 +30,7 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-#this redirects requests and parameters to the correct root path
+#This redirects requests and parameters to the correct root path
   def search
     redirect_to root_path(
       food: params[:food], 
@@ -38,7 +40,7 @@ class EventsController < ApplicationController
     )
   end
 
-#this creates a level of security to privatize data
+#This creates a level of security to privatize data
   private
   def event_params
     params.require(:event).permit(
@@ -54,7 +56,7 @@ class EventsController < ApplicationController
     )
   end
 
-#this places restrictions on the parameters of a given event
+#This places restrictions on the parameters of a given event
   def query_events(params)
     events = Event.where('date >= ?', Date.today)
     if params[:food].present? && params[:food] != 'Other'
@@ -67,7 +69,7 @@ class EventsController < ApplicationController
       events = events.where(vegan: true)
     end
 
-#allows the input and output parameters like date and time
+#Allows the input and output parameters like time and date.
     if params[:date].present?
       date = params[:date]
       events = events.where('date >= ?', date)
