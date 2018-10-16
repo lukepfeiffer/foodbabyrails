@@ -46,7 +46,6 @@
     = javascript_tag "markers = #{@events.to_json.html_safe};"
     :javascript
       var map;
-      var size = parseInt("#{@size}", 10);
       var reitz = {lat: 29.6463, lng: -82.3478};
 
       function initMap() {

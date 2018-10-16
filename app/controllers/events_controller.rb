@@ -9,6 +9,15 @@ class EventsController < ApplicationController
 
   def create
     event = Event.new(event_params)
+    if event.address_line_one.present?
+      address =  event.address_line_one + ", Gainesville, FL 32611"
+      coor = Geocoder.search(address).first.coordinates
+      lat = coor[0]
+      long = coor[1]
+      event.long = long
+      event.lat = lat
+    end
+
     if event.save
       flash[:success] = "Created event!"
     else
