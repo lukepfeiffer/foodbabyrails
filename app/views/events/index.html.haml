@@ -60,8 +60,23 @@
           var currentMarker = markers[i];
           var lat = parseFloat(currentMarker.lat);
           var longitude = parseFloat(currentMarker.long)
-          var position = {lat: lat, lng: longitude};
-          var title = "<h3>" + currentMarker.food_type + ": " + currentMarker.date + " " + currentMarker.time + "</h3>";
+          var position = new google.maps.LatLng(lat, longitude);
+          //var markerDate = currentMarker.date.split("-").join("/");
+          var markerDates = currentMarker.date.split("-");
+          var markerDate = markerDates[2] + "/" + markerDates[1] + "/" + markerDates[0];
+          var markerTime = currentMarker.time.split("T")[1].split(".")[0];
+          if (parseInt(markerTime.substring(0, 2)) == 12) {
+            markerTime += " PM";
+          } else if (parseInt(markerTime.substring(0, 2)) > 12) {
+            var hours = parseInt(markerTime.substring(0, 2)) - 12;
+            var otherParts = markerTime.split(":");
+            markerTime = hours + ":" + otherParts[1] + " PM";
+          } else {
+            markerTime += " AM";
+          }
+          var title = "<h6>" + currentMarker.org_name + ": " + markerDate + " " + markerTime + "</h6> <p> Food: " + currentMarker.food_type + "</p>";
+          title += "<p> Where: " + currentMarker.building_name + " " + currentMarker.room_number + "</p>";
+          title += "<p> Vegan: " + currentMarker.vegan + "</p> <p> Vegetarian: " + currentMarker.vegetarian + "</p>";
           var content = "Some content";
           var marker = new google.maps.Marker({
             position: position,

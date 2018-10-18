@@ -5,6 +5,7 @@ class EventsController < ApplicationController
     @options = ['Yes', 'No']
     @restrictions = ['None', 'Vegetarian', 'Vegan']
     @events = query_events(params)
+    b = 6
   end
 
   def create
