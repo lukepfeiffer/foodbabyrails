@@ -1,0 +1,11 @@
+#event
+  .panel.primary
+    .panel-header
+      %h1 Details
+    .panel-body
+      %h5= "Org: #{event.org_name}"
+      %p= "Where: #{event.building_name}, #{event.room_number}"
+      %p= "When: #{event.date.try(:strftime, "%m/%d/%y")} #{event.time.try(:strftime, "%l:%M%p")}"
+      %p= "Food: #{event.food_type}"
+      %p= "Vegan Friendly: #{event.vegan ? "Yes" : "No"}"
+      %p= "Vegetarian Friendly: #{event.vegetarian ? "Yes" : "No"}"

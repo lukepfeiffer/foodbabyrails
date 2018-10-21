@@ -4,18 +4,9 @@
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      %li.nav-item.active
-        %a.nav-link{:href => "#"}
-          Home
-          %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{href: root_path} 
-          About
-          %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{href: root_path} 
-          Contact
-          %span.sr-only (current)
+      %li.nav-item.active= link_to "Home", root_path, class: "nav-link"
+      %li.nav-item= link_to "About", about_path, class: "nav-link"
+      %li.nav-item= link_to "Contact", contact_path, class: "nav-link"
       %li.nav-item
         - if current_user.present?
           = link_to "Sign Out", sign_out_path, method: :delete, class: "nav-link"

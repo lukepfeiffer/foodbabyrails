@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   delete '/sign_out', to: 'sessions#destroy'
 
   get "/sign_in", to: "pages#sign_in"
+  get "/about", to: "pages#about"
+  get "/contact", to: "pages#contact"
+  get "/render_details", to: "events#render_details"
 end

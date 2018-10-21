@@ -28,7 +28,9 @@
     .row
       .main-map.col-md-12
         #map
-      %table.table.table-light.table-hover.table-striped.col-md-12
+    %br
+    .row
+      %table.table.table-light.table-hover.table-striped.col-md-8
         %thead.thead-light
           %tr
             %th Org
@@ -39,7 +41,7 @@
               %th Actions
         %tbody
           - @events.each do |event|
-            %tr
+            %tr.event-details{data: {id: event.id}}
               %td= event.org_name
               %td= "#{event.date.try(:strftime, "%m/%d/%y")} #{event.time.try(:strftime, "%l:%M%p")}"
               %td= "#{event.building_name} #{event.room_number}"
@@ -48,7 +50,8 @@
                 %td
                   = link_to "Edit", edit_event_path(event.id), class: "btn btn-sm btn-warning"
                   = link_to "Delete", event_path(event.id), method: :delete, class: "btn btn-sm btn-danger"
-
+      .col-md-4
+        = render "details", event: Event.new
     = javascript_tag "markers = #{@events.to_json.html_safe};"
     :javascript
       var map;
@@ -67,7 +70,6 @@
           var lat = parseFloat(currentMarker.lat);
           var longitude = parseFloat(currentMarker.long)
           var position = new google.maps.LatLng(lat, longitude);
-          //var markerDate = currentMarker.date.split("-").join("/");
           var markerDates = currentMarker.date.split("-");
           var markerDate = markerDates[2] + "/" + markerDates[1] + "/" + markerDates[0];
           var markerTime = currentMarker.time.split("T")[1].split(".")[0];

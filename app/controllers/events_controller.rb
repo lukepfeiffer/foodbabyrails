@@ -4,7 +4,11 @@ class EventsController < ApplicationController
     @types = ['Other', 'Pizza', 'Wings', 'Sandwiches', 'Burritos']
     @restrictions = ['None', 'Vegetarian', 'Vegan']
     @events = query_events(params)
-    b = 6
+  end
+
+  def render_details
+    event = Event.find(params[:event_id])
+    render partial: "details", locals: {event: event}
   end
 
   def create
