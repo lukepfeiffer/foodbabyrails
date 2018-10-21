@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    @types = ['Other', 'Pizza', 'Wings', 'Sandwiches', 'Burritos']
     @restrictions = ['None', 'Vegetarian', 'Vegan']
     @events = query_events(params)
   end
