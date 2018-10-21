@@ -9,6 +9,7 @@
 addresses = ['686 Museum Rd', '1064 Center Dr', '444 Newell Dr', '1885 Stadium Rd', '330 Newell Dr']
 food = ['Pizza', 'Wings', 'Sandwiches', 'Burritos', 'Other']
 
+User.create(username: admin, password: "password", email: "admin@example.com")
 10.times do |n|
   address =  addresses.sample + ", Gainesville, FL 32611 US"
   coor = Geocoder.search(address).first.coordinates
