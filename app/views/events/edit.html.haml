@@ -1,1 +1,7 @@
-= render "form"
+.col-md-8.center-block
+  .panel.primary
+    .panel-header
+      %h1= "Edit #{@event.org_name} event"
+      = link_to "Return", root_path, class: "btn btn-sm btn-danger"
+    .panel-body
+      = render "form"

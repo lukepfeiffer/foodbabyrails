@@ -16,6 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user.present? && current_user.id == params[:id].to_i
+      @events = User.find(current_user.id).events
+    else
+      flash[:danger] = "You weren't signed in."
+      redirect_to root_path
+    end
   end
 
   def update
