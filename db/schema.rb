@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_10_21_035248) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authem_sessions", force: :cascade do |t|
     t.string "role", null: false
     t.string "subject_type", null: false
-    t.integer "subject_id", null: false
+    t.bigint "subject_id", null: false
     t.string "token", limit: 60, null: false
     t.datetime "expires_at", null: false
     t.integer "ttl", null: false
