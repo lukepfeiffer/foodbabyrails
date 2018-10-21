@@ -2,15 +2,17 @@
   .main-content
     %br
     %br
-    .row
-      .search
+    .panel.primary
+      .panel-header
+        %h1 Search
+      .search.panel-body
         = form_tag "/search" do
           .form-group
             .row
-              .col-md-2
+              .col-md-3
                 = label_tag :food
                 = select_tag :food, options_for_select(@types), class: "form-control"
-              .col-md-2
+              .col-md-3
                 = label_tag :restrictions
                 = select_tag :restrictions, options_for_select(@restrictions), class: "form-control"
               .col-md-3
@@ -19,14 +21,14 @@
               .col-md-2
                 = label_tag :time
                 = time_field_tag :time, nil, class: "form-control"
-              .col-md-2
-                = label_tag :time
-                = submit_tag :submit, class: "btn btn-primary"
+              .col-md-1
+                = label_tag "."
+                = submit_tag :search, class: "btn btn-primary"
 
     .row
-      .main-map.col-md-7
+      .main-map.col-md-12
         #map
-      %table.table.table-light.table-hover.table-striped.col-md-5
+      %table.table.table-light.table-hover.table-striped.col-md-12
         %thead.thead-light
           %tr
             %th Org
@@ -55,7 +57,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: reitz,
-          zoom: 15
+          zoom: 16
         });
         var infowindow = new google.maps.InfoWindow({
           content: "Some title"
