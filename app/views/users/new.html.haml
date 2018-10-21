@@ -1,0 +1,25 @@
+.col-md-8.center-block
+  .panel.primary.align-middle
+    .panel-header
+      %h1 Register Account
+    .panel-body
+      .form
+        = form_for @user do |f|
+          %fieldset
+            %dl
+              %dt= f.label :email
+              %dd= f.text_field :email, placeholder: 'email@example.com', class: "form-control"
+
+              %dt= f.label :username
+              %dd= f.password_field :username, class: "form-control"
+
+              %dt= f.label :password
+              %dd= f.password_field :password, class: "form-control"
+
+              %dt= f.label :password_confirmation
+              %dd= f.password_field :password_confirmation, class: "form-control"
+
+          %fieldset.actions
+            = submit_tag "Register", class: "btn btn-primary"
+            = link_to root_path do
+              %button.btn.btn-danger Cancel

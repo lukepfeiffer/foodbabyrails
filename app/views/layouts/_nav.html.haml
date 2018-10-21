@@ -16,3 +16,10 @@
         %a.nav-link{href: root_path} 
           Contact
           %span.sr-only (current)
+      %li.nav-item
+        - if current_user.present?
+          = link_to "Sign Out", sign_out_path, method: :delete, class: "nav-link"
+        - else
+          %a.nav-link{href: sign_in_path} 
+            Sign In
+            %span.sr-only (current)

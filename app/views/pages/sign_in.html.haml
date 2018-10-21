@@ -1,0 +1,19 @@
+.col-md-8.center-block
+  .panel.primary.align-middle
+    .panel-header
+      %h1 Sign In
+    .panel-body
+      .form
+        = form_tag sign_in_path do
+          %fieldset
+            %dl
+              %dt= label_tag :email
+              %dd= text_field_tag :email, nil, id: 'sign_in_email', placeholder: 'email@example.com', class: "form-control"
+              %dt= label_tag :password
+              %dd= password_field_tag :password, nil, id: 'sign_in_password', class: "form-control"
+          %fieldset.actions
+            = submit_tag "Sign In", class: "btn btn-primary"
+            = link_to root_path do
+              %button.btn.btn-danger Cancel
+      %br
+      = link_to "Not registered? Create an account.", new_user_path

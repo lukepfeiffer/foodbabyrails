@@ -1,4 +1,4 @@
-class CreateAuthemSessions < ActiveRecord::Migration
+class CreateAuthemSessions < ActiveRecord::Migration[5.2]
   def change
     create_table :authem_sessions do |t|
       t.string     :role,       null: false
