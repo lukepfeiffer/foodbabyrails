@@ -24,16 +24,17 @@
                 = submit_tag :submit, class: "btn btn-primary"
 
     .row
-      .main-map.col-md-6
+      .main-map.col-md-7
         #map
-      %table.table.table-light.table-hover.table-striped.col-md-6
+      %table.table.table-light.table-hover.table-striped.col-md-5
         %thead.thead-light
           %tr
             %th Org
             %th When
             %th Location
             %th Food Type
-            %th Restrictions
+            - if current_user.present?
+              %th Actions
         %tbody
           - @events.each do |event|
             %tr
@@ -41,7 +42,10 @@
               %td= "#{event.date.try(:strftime, "%m/%d/%y")} #{event.time.try(:strftime, "%l:%M%p")}"
               %td= "#{event.building_name} #{event.room_number}"
               %td= event.food_type
-              %td= "#{event.vegan} #{event.vegetarian}"
+              - if current_user.present? && current_user.id == event.user_id
+                %td
+                  = link_to "Edit", edit_event_path(event.id), class: "btn btn-sm btn-warning"
+                  = link_to "Delete", event_path(event.id), method: :delete, class: "btn btn-sm btn-danger"
 
     = javascript_tag "markers = #{@events.to_json.html_safe};"
     :javascript
@@ -93,44 +97,8 @@
 
     %script{src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}&callback=initMap", async: true,  defer: true}
 
-  .form
-    = form_for @event do |f|
-      %fieldset
-        .form-group
-          .row
-            .col-md-6
-              = f.label :org
-              = f.text_field :org_name, class: "form-control", placeholder: "Association of Computer Engineers"
-            .col-md-3
-              = f.label :date
-              = f.date_field :date, class: "form-control"
-            .col-md-3
-              = f.label :time
-              = f.time_field :time, class: "form-control"
-
-          .row
-            .col-md-4
-              = f.label :food
-              = f.select :food_type, @types, {}, class: "form-control"
-            .col-md-4
-              = f.label :vegetarian_friendly
-              = f.select :vegetarian, @options, {}, class: "form-control"
-            .col-md-4
-              = f.label :vegan_friendly
-              = f.select :vegan, @options, {}, class: "form-control"
-
-          = f.label :address_line_1
-          = f.text_field :address_line_one, class: "form-control", placeholder: "686 Museum Rd, Gainesville"
-
-          .row
-            .col-md-6
-              = f.label :building_name
-              = f.text_field :building_name, class: "form-control", placeholder: "686 Museum Rd, Gainesville"
-            .col-md-6
-              = f.label :room_number
-              = f.text_field :room_number, class: "form-control", placeholder: "E221"
-      %fieldset.actions
-        = f.submit "Save", class: "btn btn-primary"
+  - if current_user.present?
+    = render "form"
   .footer-links
     %br
     %br
