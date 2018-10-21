@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
   def index
-    @event = Event.new
-    @types = ['Other', 'Pizza', 'Wings', 'Sandwiches', 'Burritos']
     @restrictions = ['None', 'Vegetarian', 'Vegan']
     @events = query_events(params)
   end
@@ -9,6 +7,11 @@ class EventsController < ApplicationController
   def render_details
     event = Event.find(params[:event_id])
     render partial: "details", locals: {event: event}
+  end
+
+  def new
+    @types = ['Other', 'Pizza', 'Wings', 'Sandwiches', 'Burritos']
+    @event = Event.new
   end
 
   def create

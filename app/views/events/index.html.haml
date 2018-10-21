@@ -2,6 +2,10 @@
   .main-content
     %br
     %br
+    - if current_user.present?
+      = link_to "Create Event", new_event_path, class: "btn btn-xl btn-primary"
+    %br
+    %br
     .panel.primary
       .panel-header
         %h1 Search
@@ -100,9 +104,6 @@
       }
 
     %script{src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}&callback=initMap", async: true,  defer: true}
-
-  - if current_user.present?
-    = render "form"
   .footer-links
     %br
     %br
