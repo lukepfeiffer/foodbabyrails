@@ -14,6 +14,3 @@ test: &test
 production:
   <<: *default
   database: foodBaby_production
-
-cucumber:
-  <<: *test
