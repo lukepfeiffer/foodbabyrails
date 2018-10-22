@@ -13,7 +13,6 @@
               %dd= password_field_tag :password, nil, id: 'sign_in_password', class: "form-control"
           %fieldset.actions
             = submit_tag "Sign In", class: "btn btn-primary"
-            = link_to root_path do
-              %button.btn.btn-danger Cancel
+            = link_to "Cancel", root_path, class: "btn btn-danger"
       %br
       = link_to "Not registered? Create an account.", new_user_path
