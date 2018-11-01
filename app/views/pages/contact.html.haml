@@ -1,1 +1,36 @@
-%h1 Contact
+.col-md-8.center-block
+  .panel.primary.align-middle
+    .panel-header
+      %h1 Contact
+    .panel-body
+      .row
+        .card.col-md-4
+          .card-body
+            %h5.card-title Contact Us!
+            %p.card-text Call: (904) 888-8888
+            %p.card-text
+              Email: 
+              = link_to "contact@foodbaby.org", "mailto:contact@foodbaby.org"
+            %p.card-text
+              Social Media: 
+              = link_to "@foodbaby", root_path
+        .card.col-md-4
+          .card-body
+            %h5.card-title Comments? Concerns
+            %p.card-text Call: (904) 111-1111
+            %p.card-text
+              Email: 
+              = link_to "complain@foodbaby.org", "mailto:contact@foodbaby.org"
+            %p.card-text
+              Social Media: 
+              = link_to "@complainfoodbaby", root_path
+        .card.col-md-4
+          .card-body
+            %h5.card-title Leave a Review
+            %p.card-text Call: (904) 222-2222
+            %p.card-text
+              Email: 
+              = link_to "review@foodbaby.org", "mailto:contact@foodbaby.org"
+            %p.card-text
+              Social Media: 
+              = link_to "@reviewfoodbaby", root_path
