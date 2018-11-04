@@ -16,12 +16,18 @@
     width: 60%;    
   }
 
+  .table-wrapper {
+    display: initial;
+    max-height: 300px;
+    overflow-y: scroll;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
   table {
   }
 
-  tbody {
-    height: 200px;
-    overflow-y: scroll;
+  thead {
+    width: 100%;
   }
 
   #map {
