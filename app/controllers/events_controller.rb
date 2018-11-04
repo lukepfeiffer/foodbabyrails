@@ -108,7 +108,7 @@ class EventsController < ApplicationController
   end
 
   def query_events(params)
-    events = Event.where('date >= ?', Date.today)
+    events = Event.all
     if params[:food].present? && params[:food] != 'Other'
       events = events.where(food_type: params[:food])
     end
@@ -120,9 +120,12 @@ class EventsController < ApplicationController
     end
 
     if params[:date].present?
-      date = params[:date]
+      date = params[:date].to_date
       events = events.where('date >= ?', date)
+    else 
+      events = Event.where('date >= ?', Date.today)
     end
+
     if params[:time].present?
       events = events.where('time >= ?', params[:time])
     end
