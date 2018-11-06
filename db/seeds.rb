@@ -9,7 +9,10 @@
 addresses = ['686 Museum Rd', '1064 Center Dr', '444 Newell Dr', '1885 Stadium Rd', '330 Newell Dr']
 food = ['Pizza', 'Wings', 'Sandwiches', 'Burritos', 'Other']
 
-10.times do |n|
+User.create(username: "admin", password: "password", email: "admin@example.com")
+user = User.find_by(email: "admin@example.com")
+
+40.times do |n|
   address =  addresses.sample + ", Gainesville, FL 32611 US"
   coor = Geocoder.search(address).first.coordinates
   lat = coor[0]
@@ -23,9 +26,10 @@ food = ['Pizza', 'Wings', 'Sandwiches', 'Burritos', 'Other']
     food_type: food.sample,
     vegan: [true, false].sample,
     vegetarian: [true, false].sample,
-    date: Date.today + [1, 2, -1, -2].sample.days,
+    date: Date.today + [1, 2, 3, 4, 5, 6, -1, -2].sample.days,
     time: Time.now,
     lat: lat,
-    long: long
+    long: long,
+    user_id: user.id
   )
 end

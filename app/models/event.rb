@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  belongs_to :user
 end
 
 #What's a banana's favorite dance move?

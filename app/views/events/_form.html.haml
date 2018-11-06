@@ -1,0 +1,38 @@
+.form
+  = form_for @event do |f|
+    %fieldset
+      .form-group
+        .row
+          .col-md-6
+            = f.label :org
+            = f.text_field :org_name, class: "form-control", placeholder: "Association of Computer Engineers"
+          .col-md-3
+            = f.label :date
+            = f.date_field :date, class: "form-control"
+          .col-md-3
+            = f.label :time
+            = f.time_field :time, class: "form-control"
+
+        .row
+          .col-md-4
+            = f.label :food
+            = f.select :food_type, @types, {}, class: "form-control"
+          .col-md-4
+            = f.label :vegetarian_friendly
+            = f.check_box :vegetarian, class: "form-control"
+          .col-md-4
+            = f.label :vegan_friendly
+            = f.check_box :vegan, class: "form-control"
+ 
+        = f.label :address_line_1
+        = f.text_field :address_line_one, class: "form-control", placeholder: "686 Museum Rd, Gainesville"
+ 
+        .row
+          .col-md-6
+            = f.label :building_name
+            = f.text_field :building_name, class: "form-control", placeholder: "686 Museum Rd, Gainesville"
+          .col-md-6
+            = f.label :room_number
+            = f.text_field :room_number, class: "form-control", placeholder: "E221"
+    %fieldset.actions
+      = f.submit "Save", class: "btn btn-primary"

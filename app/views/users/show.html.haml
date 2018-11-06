@@ -1,0 +1,24 @@
+.col-md-8.center-block
+  .panel.primary
+    .panel-header
+      %h1 Your Events
+      = link_to "Return", root_path, class: "btn btn-sm btn-danger"
+    .panel-body
+      %table.table.table-light.table-hover.table-striped.col-md-12
+        %thead.thead-light
+          %tr
+            %th Org
+            %th When
+            %th Location
+            %th Food Type
+            %th Actions
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td= event.org_name
+              %td= "#{event.date.try(:strftime, "%m/%d/%y")} #{event.time.try(:strftime, "%l:%M%p")}"
+              %td= "#{event.building_name} #{event.room_number}"
+              %td= event.food_type
+              %td
+                = link_to "Edit", edit_event_path(event.id), class: "btn btn-sm btn-warning"
+                = link_to "Delete", event_path(event.id), method: :delete, class: "btn btn-sm btn-danger"
