@@ -10,6 +10,7 @@ Fabricator(:event) do
   time Time.now
   lat 29.644920
   long -82.357193
+<<<<<<< HEAD
 end
 
 
