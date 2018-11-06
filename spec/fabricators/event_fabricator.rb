@@ -1,7 +1,7 @@
 Fabricator(:event) do
   org_name "Org"
   address_line_one "686 Museum Rd"
-  room_num "E2120"
+  room_number "E2120"
   building_name "Reitz Union"
   food_type "Pizza"
   vegan false
@@ -10,5 +10,4 @@ Fabricator(:event) do
   time Time.now
   lat 29.644920
   long -82.357193
-  user_id 1
 end
