@@ -36,6 +36,10 @@ class EventsController < ApplicationController
 
     event.user_id = current_user.id
 
+    if !params[:date].present?
+      event.date = Date.tomorrow
+    end
+
     if event.save
       flash[:success] = "Created event!"
     else
