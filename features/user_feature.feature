@@ -47,3 +47,18 @@ Feature: Users
     Then I should see "Created event!"
     And I should see "org"
     And I should see "build"
+	
+  Scenario: User edits event
+    Given the following user:
+    	| username | username          |
+	| password | password 	       |
+	| email    | email@example.com |
+    And that user has 1 event
+    And I am signed in as an admin
+    And I am on the root path
+    When I follow "Edit"
+    And I fill in "event_org_name" with "something_else"
+    And I press "Save"
+    Then I should see "Update event!"
+    And I should see "something_else"
+
