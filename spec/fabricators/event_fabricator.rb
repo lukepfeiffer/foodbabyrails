@@ -14,6 +14,6 @@ end
 
 
 Fabricator(:past_event, from: :event) do
-  date Date.yesterday
+  date Date.yesterday - 1.day
   time Time.now - 1.day
 end
