@@ -12,6 +12,10 @@ Fabricator(:event) do
   long -82.357193
 end
 
+Fabricator(:wings_event, from: :event) do
+  food_type "Wings"
+  room_number "E1111"
+end
 
 Fabricator(:past_event, from: :event) do
   date Date.yesterday - 1.day
