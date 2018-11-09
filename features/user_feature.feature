@@ -62,3 +62,20 @@ Feature: Users
     Then I should see "Update event!"
     And I should see "something_else"
 
+  Scenario: User views their events
+    Given the following user:
+    	| username | username          |
+	| password | password 	       |
+	| email    | email@example.com |
+    And that user has 1 event
+    And the following user:
+    	| username | username          |
+	| password | password 	       |
+	| email    | email2@example.com |
+    And that user has 1 wings_event
+    And I am signed in as an admin
+    When I follow "username"
+    Then I should see "Pizza"
+    And I should see "E2120"
+    And I should not see "Wings"
+    And I should not see "E1111"
