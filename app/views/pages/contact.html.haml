@@ -1,76 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    / Latest compiled and minified CSS
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / jQuery library
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"}
+    / Latest compiled JavaScript
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  :css
+    .sub {
+      margin: 0 auto;
+      width: 50%;
+    }
+    #TitleCard {
+        padding: 25px;
+        text-align: center;
+        color: black;
+        background-color: lightgray;
+        
+    }
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    #BoxShadow {
+        border: 1px solid;
+        padding: 0px;
+        box-shadow: 5px 10px;
+    }
+    #bodytext {
+        color: black;
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+    #teamdescriptions {
+        position: relative;
+        padding: 25px !important;
 
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <style>
-        #TitleCard {
-            padding: 25px;
-            text-align: center;
-            color: black;
-            background-color: lightgray;
-            
-        }
+        margin-top: 0px !important;
+        background: #eee;
+        text-align: center;
+        margin-bottom: 0 !important;
+    }
+    #whitedescriptions {
+        position: relative;
+        padding: 25px !important;
 
-        #BoxShadow {
-            border: 1px solid;
-            padding: 0px;
-            box-shadow: 5px 10px;
-        }
-        #bodytext {
-            color: black;
-            padding-top: 10px;
-            padding-bottom: 30px;
-        }
-        #teamdescriptions {
-            position: relative;
-            padding: 25px !important;
+        margin-top: 0px !important;
+        text-align: center;
+        margin-bottom: 0 !important;
+    }
+    #coloredpictures {
+        position: relative;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
 
-            margin-top: 0px !important;
-            background: #eee;
-            text-align: center;
-            margin-bottom: 0 !important;
-        }
-        #whitedescriptions {
-            position: relative;
-            padding: 25px !important;
+        text-align: center;
+        background: #eee;
+    }
+  %body{:style => "background: white;"}
+    .jumbotron
+      %h1.text-center Contact Us
+    .container-fluid
+      %h2.text-center Home Office
+      .sub
+        = image_tag "carleton.jpg", class: "img-responsive"
+      %h3.text-center Carleton Auditorium
+      %p.text-center 1475 Union Rd, Gainesville, FL 32611
+    #teamdescriptions.container-fluid
+      %h2.text-center Other Methods
+      %h4.text-center Email: pleasedontcontactus@foodbaby.com
+      %h4.text-center Phone: 407-612-Baby
 
-            margin-top: 0px !important;
-            text-align: center;
-            margin-bottom: 0 !important;
-        }
-        #coloredpictures {
-            position: relative;
-            margin-left: 0px !important;
-            margin-right: 0px !important;
-
-            text-align: center;
-            background: #eee;
-        }
-    </style>
-    <body style="background: white;">
-        <div class="jumbotron">
-            <h1 class="text-center">Contact Us</h1>
-        </div>
-        <div class="container-fluid">
-            <h2 class="text-center">Home Office</h2>
-            <img class="img-responsive; center-block" src="app/assets/images/Better Carleton.jpg">
-            <h3 class="text-center">Carleton Auditorium</h3>
-            <p class="text-center">1475 Union Rd, Gainesville, FL 32611</p>
-        </div>
-        <div id="teamdescriptions" class="container-fluid">
-            <h2 class="text-center">Other Methods</h2>
-            <h4 class="text-center">Email: pleasedontcontactus@foodbaby.com</h4>
-            <h4 class="text-center">Phone: 407-612-Baby</h4>
-        </div>
-    </body>
-</html>
