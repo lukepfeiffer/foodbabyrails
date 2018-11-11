@@ -19,6 +19,15 @@
 
       }
 
+      .sub {
+        width: 50%;
+        margin: 0 auto;
+      }
+
+      img {
+        width: 100%;
+      }
+
       #BoxShadow {
           border: 1px solid;
           padding: 0px;
@@ -70,22 +79,27 @@
     .jumbotron
       %h1{:style => "text-align: center"} The Team
     .container-fluid
-      %h2#whitedescriptions.text-center Alec Grubbs
-      = image_tag "MrBean.jpg", id: "whitedescriptions", class: "center-block"
+      .sub
+        %h2#whitedescriptions.text-center Alec Grubbs
+        = image_tag "alec.jpg", id: "whitedescriptions", class: "center-block"
     %h4#whitedescriptions.text-center Scrum Master
     .container-fluid{:style => "background: #eee"}
-      %h2#teamdescriptions.text-center Luke Pfieffer
-      = image_tag "MrBean.jpg", id: "whitedescriptions", class: "center-block"
+      .sub
+        %h2#teamdescriptions.text-center Luke Pfieffer
+        = image_tag "luke.jpg", id: "whitedescriptions", class: "center-block"
     %h4#teamdescriptions Product Manager
     .container-fluid
-      %h2#whitedescriptions.text-center Matthew Serwinowski
-      = image_tag "MrBean.jpg", id: "whitedescriptions", class: "center-block"
+      .sub
+        %h2#whitedescriptions.text-center Matthew Serwinowski
+        = image_tag "matt.jpg", id: "whitedescriptions", class: "center-block"
     %h4#whitedescriptions.text-center Developer
     .container-fluid{:style => "background: #eee"}
-      %h2#teamdescriptions.text-center Brandon Taylor
-      = image_tag "MrBean.jpg", id: "whitedescriptions", class: "center-block"
+      .sub
+        %h2#teamdescriptions.text-center Brandon Taylor
+        = image_tag "brandon.jpg", id: "whitedescriptions", class: "center-block"
     %h4#teamdescriptions Developer
     .container-fluid
-      %h2#whitedescriptions.text-center Michael McNally
-      = image_tag "MrBean.jpg", id: "whitedescriptions", class: "center-block"
+      .sub
+        %h2#whitedescriptions.text-center Michael McNally
+        = image_tag "mike.jpg", id: "whitedescriptions", class: "center-block"
     %h4#whitedecriptions.text-center Developer
