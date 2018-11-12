@@ -11,8 +11,8 @@ User.delete_all
 puts "Deleting Events"
 Event.delete_all
 
-addresses = ['686 Museum Rd', '1064 Center Dr', '444 Newell Dr', '1885 Stadium Rd', '330 Newell Dr']
-building = ["Reitz Union", "NEB", "CISE", 'WEIL', "TURL" ]
+addresses = ['686 Museum Rd', '1064 Center Dr', '444 Newell Dr', '3150 Hull Rd', '330 Newell Dr']
+building = ["Reitz Union", "NEB", "CISE", 'SW REC', "TURL" ]
 food = ['Pizza', 'Wings', 'Sandwiches', 'Burritos', 'Other']
 
 puts "Create Admin"
