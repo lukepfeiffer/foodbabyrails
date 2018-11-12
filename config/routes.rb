@@ -1,3 +1,5 @@
+#This identifies the tags and names for the post and get commands
+#this also helps to funnel the server requests 
 Rails.application.routes.draw do
   root to: "events#index"
 
