@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @types = ['Other', 'Pizza', 'Wings', 'Sandwiches', 'Burritos']
+    @types = ['Any', 'Other', 'Pizza', 'Wings', 'Sandwiches', 'Burritos']
     @restrictions = ['None', 'Vegetarian', 'Vegan']
     @events = query_events(params)
   end
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     end
 
     if event.address_line_one.present?
-      address =  event.address_line_one + ", Gainesville, FL 32611"
+      address =  event.address_line_one + ", Gainesville, FL US"
       coor = Geocoder.search(address).first.coordinates
       lat = coor[0]
       long = coor[1]
@@ -66,7 +66,7 @@ class EventsController < ApplicationController
     lat = event.lat
     long = event.long
     if params[:event][:address_line_one].present?
-      address = params[:event][:address_line_one] + ", Gainesville, FL 32611"
+      address = params[:event][:address_line_one] + ", Gainesville, FL US"
       coor = Geocoder.search(address)
       if coor.present?
         coor = coor.first.coordinates
@@ -124,7 +124,9 @@ class EventsController < ApplicationController
     end
 
     if params[:food].present?
-      events = events.where(food_type: params[:food])
+      if params[:food] != 'Any'
+        events = events.where(food_type: params[:food])
+      end
     end
 
     #allows for the selection of vegetarian options
