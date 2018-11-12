@@ -1,1 +1,105 @@
-%h1 About
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    / Latest compiled and minified CSS
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / jQuery library
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"}
+    / Latest compiled JavaScript
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    :css
+      #TitleCard {
+          padding: 25px;
+          text-align: center;
+          color: black;
+          background-color: lightgray;
+
+      }
+
+      .sub {
+        width: 50%;
+        margin: 0 auto;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      #BoxShadow {
+          border: 1px solid;
+          padding: 0px;
+          box-shadow: 5px 10px;
+      }
+      #bodytext {
+          color: black;
+          padding-top: 10px;
+          padding-bottom: 30px;
+      }
+      #teamdescriptions {
+          position: relative;
+          padding: 25px !important;
+
+          margin-top: 0px !important;
+          background: #eee;
+          text-align: center;
+          margin-bottom: 0 !important;
+      }
+      #whitedescriptions {
+          position: relative;
+          padding: 25px !important;
+
+          margin-top: 0px !important;
+          text-align: center;
+          margin-bottom: 0 !important;
+      }
+      #coloredpictures {
+          position: relative;
+          margin-left: 0px !important;
+          margin-right: 0px !important;
+
+          text-align: center;
+          background: #eee;
+      }
+  %body{:style => "background-color: white;"}
+    .jumbotron
+      %h1{:style => "text-align: center"} Food Baby
+    .container-fluid
+      %div
+        %h3#bodytext.text-center
+          Food Baby is a product designed for and by hungry
+          students. Utilizing a map, Food Baby shows users
+          the location of nearby events that include free food.
+          These events are created by other users and include information
+          regarding the location, time, date, food offered, as well as whether
+          it is vegetarian and vegan friendly or not. Users can filter their
+          search results based on all of these tags as well.
+    .jumbotron
+      %h1{:style => "text-align: center"} The Team
+    .container-fluid
+      .sub
+        %h2#whitedescriptions.text-center Alec Grubbs
+        = image_tag "alec.jpg", id: "whitedescriptions", class: "center-block"
+    %h4#whitedescriptions.text-center Scrum Master
+    .container-fluid{:style => "background: #eee"}
+      .sub
+        %h2#teamdescriptions.text-center Luke Pfieffer
+        = image_tag "luke.jpg", id: "whitedescriptions", class: "center-block"
+    %h4#teamdescriptions Product Manager
+    .container-fluid
+      .sub
+        %h2#whitedescriptions.text-center Matthew Serwinowski
+        = image_tag "matt.jpg", id: "whitedescriptions", class: "center-block"
+    %h4#whitedescriptions.text-center Developer
+    .container-fluid{:style => "background: #eee"}
+      .sub
+        %h2#teamdescriptions.text-center Brandon Taylor
+        = image_tag "brandon.jpg", id: "whitedescriptions", class: "center-block"
+    %h4#teamdescriptions Developer
+    .container-fluid
+      .sub
+        %h2#whitedescriptions.text-center Michael McNally
+        = image_tag "mike.jpg", id: "whitedescriptions", class: "center-block"
+    %h4#whitedecriptions.text-center Developer
