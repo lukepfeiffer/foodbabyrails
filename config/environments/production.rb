@@ -1,3 +1,9 @@
+#This is another mainly default file
+#This is what the code uses to come 
+#to a complete event. 
+#Much of this is in coordination with 
+#other larger files in the sets.
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
