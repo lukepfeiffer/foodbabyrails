@@ -38,15 +38,18 @@
         %table.table.table-light.table-hover.table-striped
           %thead.thead-light
             %tr
-              %th Org
+              %th
+              %th Org 
               %th When
               %th Location
               %th Food Type
               - if current_user.present?
                 %th Actions
+          - n = 1
           %tbody
             - @events.each do |event|
               %tr.event-details{data: {id: event.id}}
+                %td= n
                 %td= event.org_name
                 %td= "#{event.date.try(:strftime, "%m/%d/%y")} #{event.time.try(:strftime, "%l:%M%p")}"
                 %td= "#{event.building_name} #{event.room_number}"
@@ -55,6 +58,7 @@
                   %td
                     = link_to "Edit", edit_event_path(event.id), class: "btn btn-sm btn-warning"
                     = link_to "Delete", event_path(event.id), method: :delete, class: "btn btn-sm btn-danger"
+                - n = n + 1
       .col-md-4
         = render "details", event: Event.new
     = javascript_tag "markers = #{@events.to_json.html_safe};"
