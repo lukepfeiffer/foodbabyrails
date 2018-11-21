@@ -53,7 +53,7 @@ Feature: Users
     And I am signed in as an admin
     And I follow "Create Event"
     When I fill in "event_org_name" with "org"
-    And I fill in "event_address_line_one" with "686 Museum Rd"
+    And I fill in "searchTextField" with "Reitz Union Hotel, Museum Road, Gainesville, FL, USA"
     And I fill in "event_building_name" with "build"
     And I press "Save"
     Then I should see "Created event!"

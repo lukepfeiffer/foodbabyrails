@@ -1,3 +1,4 @@
+%script{src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}&libraries=places"}
 .form
   = form_for @event do |f|
     %fieldset
@@ -24,8 +25,16 @@
             = f.label :vegan_friendly
             = f.check_box :vegan, class: "form-control"
  
-        = f.label :address_line_1
-        = f.text_field :address_line_one, class: "form-control", placeholder: "686 Museum Rd"
+        .row
+          .col-md-4
+            = f.label :address_line
+            = f.text_field :address_line_one, id: "searchTextField", class: "form-control", placeholder: "Reitz Union"
+          .col-md-4
+            = f.label :latitude
+            = f.text_field :lat, class: "form-control"
+          .col-md-4
+            = f.label :longitude
+            = f.text_field :long, class: "form-control"
  
         .row
           .col-md-6
@@ -34,5 +43,28 @@
           .col-md-6
             = f.label :room_number
             = f.text_field :room_number, class: "form-control", placeholder: "E221"
+
     %fieldset.actions
       = f.submit "Save", class: "btn btn-primary"
+
+:javascript
+  var defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(29.649130, -82.369779),
+    new google.maps.LatLng(29.641223, -82.344715));
+
+  var input = document.getElementById('searchTextField');
+  var options = {
+    bounds: defaultBounds,
+    types: ['establishment']
+  };
+
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+  autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    var place = autocomplete.getPlace();
+    lat = place.geometry.location.lat()
+    lng = place.geometry.location.lng()
+    document.getElementById("event_lat").value = lat;
+    document.getElementById("event_long").value = lng;
+  });

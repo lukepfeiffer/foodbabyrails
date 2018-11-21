@@ -22,20 +22,15 @@ class EventsController < ApplicationController
       redirect_to root_path
     end
 
-    if event.address_line_one.present?
-      address =  event.address_line_one + ", Gainesville, FL US"
-      coor = Geocoder.search(address).first.coordinates
-      lat = coor[0]
-      long = coor[1]
-      event.long = long
-      event.lat = lat
+    if !params[:time].present?
+      event.time = Time.now + 1.hour
     end
-
-    event.user_id = current_user.id
 
     if !params[:date].present?
       event.date = Date.tomorrow
     end
+
+    event.user_id = current_user.id
 
     if event.save
       flash[:success] = "Created event!"
@@ -63,18 +58,6 @@ class EventsController < ApplicationController
     end
 
     event.update(event_params)
-    lat = event.lat
-    long = event.long
-    if params[:event][:address_line_one].present?
-      address = params[:event][:address_line_one] + ", Gainesville, FL US"
-      coor = Geocoder.search(address)
-      if coor.present?
-        coor = coor.first.coordinates
-        lat = coor[0]
-        long = coor[1]
-      end
-      event.update(lat: lat, long: long)
-    end
 
     flash[:success] = "Update event!"
     redirect_to events_path
@@ -107,7 +90,9 @@ class EventsController < ApplicationController
       :vegan,
       :vegetarian,
       :date,
-      :time
+      :time,
+      :lat,
+      :long
     )
   end
 
