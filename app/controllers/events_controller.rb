@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   def index
-    @types = ['Any', 'Other', 'Pizza', 'Wings', 'Sandwiches', 'Burritos']
     @restrictions = ['None', 'Vegetarian', 'Vegan']
     @events = query_events(params)
+    @types = Event.distinct.pluck(:food_type)
   end
 
   def render_details

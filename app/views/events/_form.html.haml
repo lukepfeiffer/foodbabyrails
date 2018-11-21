@@ -17,7 +17,7 @@
         .row
           .col-md-4
             = f.label :food
-            = f.select :food_type, @types, {}, class: "form-control"
+            = f.text_field :food_type, class: "form-control"
           .col-md-4
             = f.label :vegetarian_friendly
             = f.check_box :vegetarian, class: "form-control"
@@ -29,11 +29,8 @@
           .col-md-12
             = f.label :address_line
             = f.text_field :address_line_one, id: "searchTextField", class: "form-control", placeholder: "Reitz Union"
-          //.col-md-4
-          //= f.label :latitude
+
           = f.hidden_field :lat, class: "form-control"
-          //.col-md-4
-          //= f.label :longitude
           = f.hidden_field :long, class: "form-control"
  
         .row
