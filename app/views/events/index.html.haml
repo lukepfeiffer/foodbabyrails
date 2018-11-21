@@ -92,8 +92,21 @@
             markerTime += " AM";
           }
           var title = "<h6>" + currentMarker.org_name + ": " + markerDate + " " + markerTime + "</h6> <p> Food: " + currentMarker.food_type + "</p>";
+          var vegan, vegetarian;
+          if (currentMarker.vegan) {
+            vegan = "Yes";
+          } else {
+            vegan = "No";
+          }
+
+          if (currentMarker.vegetarian) {
+            vegetarian = "Yes";
+          } else {
+            vegetarian = "No";
+          }
+
           title += "<p> Where: " + currentMarker.building_name + " " + currentMarker.room_number + "</p>";
-          title += "<p> Vegan: " + currentMarker.vegan + "</p> <p> Vegetarian: " + currentMarker.vegetarian + "</p>";
+          title += "<p> Vegan: " + vegan + "</p> <p> Vegetarian: " + vegetarian + "</p>";
           var content = "Some content";
           var marker = new google.maps.Marker({
             position: position,
