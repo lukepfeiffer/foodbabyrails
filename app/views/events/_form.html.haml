@@ -26,15 +26,15 @@
             = f.check_box :vegan, class: "form-control"
  
         .row
-          .col-md-4
+          .col-md-12
             = f.label :address_line
             = f.text_field :address_line_one, id: "searchTextField", class: "form-control", placeholder: "Reitz Union"
-          .col-md-4
-            = f.label :latitude
-            = f.text_field :lat, class: "form-control"
-          .col-md-4
-            = f.label :longitude
-            = f.text_field :long, class: "form-control"
+          //.col-md-4
+          //= f.label :latitude
+          = f.hidden_field :lat, class: "form-control"
+          //.col-md-4
+          //= f.label :longitude
+          = f.hidden_field :long, class: "form-control"
  
         .row
           .col-md-6
