@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      sign_in(user)
-      flash[:success] = "Created and signed in!"
+      UserMailer.with(user: user).confirm_email.deliver_now
+      flash[:success] = "You have created an account, an email was sent to confirm your status."
       redirect_to root_path
     else
       flash[:danger] = "Something went wrong...."
@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   def confirmation
     if params[:user_id].present?
       User.find(params[:user_id]).update(is_confirmed: true)
-      flash[:success] = "Confirmed successfully!"
-      redirect_to root_path
+      flash[:success] = "Confirmed successfully! Sign in"
+      redirect_to log_in_path
     else 
       flash[:danger] = "This user does not exist."
       redirect_to root_path
