@@ -24,6 +24,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirmation
+    if params[:user_id].present?
+      User.find(params[:user_id]).update(is_confirmed: true)
+      flash[:success] = "Confirmed successfully!"
+      redirect_to root_path
+    else 
+      flash[:danger] = "This user does not exist."
+      redirect_to root_path
+    end
+  end
+
   def update
   end
 
