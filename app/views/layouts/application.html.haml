@@ -4,6 +4,7 @@
     %title FoodBaby
     %script{src: "http://api.tiles.mapbox.com/mapbox.js/v3.1.1/mapbox.js"}
     %link{href: "http://api.tiles.mapbox.com/mapbox.js/v3.1.1/mapbox.css", rel: "stylesheet"}
+    %link{href: "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", rel: "stylesheet"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -13,3 +14,4 @@
     = render 'layouts/nav'
     = render 'layouts/notifications'
     = yield
+    = render 'layouts/footer'

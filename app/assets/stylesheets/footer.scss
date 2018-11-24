@@ -1,0 +1,26 @@
+$background-color: #2196f3;
+$height: 145px;
+.footer-wrapper {
+  margin-top: $height / 2;
+  //padding-bottom: $height;
+
+  .page-footer {
+    color: #fff;
+    background-color: $background-color;
+    height: $height;
+
+    a {
+      color: #fff;
+    }
+
+    .social {
+      a {
+        text-align: center;
+      }
+    }
+ 
+    .footer-copyright {
+      background-color: darken($background-color, 10%);
+    }
+  }
+}

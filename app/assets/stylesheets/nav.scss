@@ -1,0 +1,26 @@
+$background-color: #2196f3;
+
+.navbar {
+  background-color: $background-color !important;
+
+  li {
+  }
+
+  a {
+    color: #fff !important;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .navbar-brand {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .active {
+    color: darken(#fff, 15%) !important;
+  }
+}
