@@ -10,7 +10,12 @@ class UsersController < ApplicationController
       flash[:success] = "You have created an account, an email was sent to confirm your status."
       redirect_to root_path
     else
-      flash[:danger] = "Something went wrong...."
+      error_messages = ""
+
+      user.errors.each do |attribute, message|
+        error_messages += "#{attribute.capitalize}: #{message}, "
+      end
+      flash[:danger] = error_messages
       redirect_to new_user_path
     end
   end

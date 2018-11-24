@@ -1,7 +1,7 @@
 Given /^I am signed in as an admin$/ do
   # Must have admin in database!!!
   visit sign_in_path
-  fill_in 'sign_in_email', with: "email@example.com"
+  fill_in 'sign_in_email', with: "email@ufl.edu"
   fill_in 'sign_in_password', with: "password"
   click_button 'Sign In'
 end
