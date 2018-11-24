@@ -3,33 +3,21 @@ Feature: Users
     Given I am on the root path
     When I follow "Sign In"
     And I follow "Not registered? Create an account."
-    And I fill in "Email" with "email@example.com"
+    And I fill in "Email" with "lukerpfeiffer@ufl.edu"
     And I fill in "Password" with "password"
     And I fill in "Password confirmation" with "password"
     And I fill in "Username" with "username"
     And I press "Register"
-    Then I should see "Created and signed in!"
+    Then I should see "You have created an account, an email was sent to confirm your status."
 
   Scenario: User Signs In
     Given the following user:
       | username | username          |
       | password | password          |
-      | email	 | email@example.com |
+      | email	 | email@ufl.edu     |
     And I am on the root path
     When I follow "Sign In"
-    And I fill in "sign_in_email" with "email@example.com"
-    And I fill in "sign_in_password" with "password"
-    And I press "Sign In"
-    Then I should see "Signed in successfully!"
-
-  Scenario: User Signs In
-    Given the following user:
-    	| username | username          |
-	| password | password 	       |
-	| email    | email@example.com |
-    And I am on the root path
-    When I follow "Sign In"
-    And I fill in "sign_in_email" with "email@example.com"
+    And I fill in "sign_in_email" with "email@ufl.edu"
     And I fill in "sign_in_password" with "password"
     And I press "Sign In"
     Then I should see "Signed in successfully!"
@@ -38,7 +26,7 @@ Feature: Users
     Given the following user:
     	| username | username          |
 	| password | password 	       |
-	| email    | email@example.com |
+	| email    | email@ufl.edu     |
     And that user has 1 event
     And I am signed in as an admin
     When I follow "Delete"
@@ -49,7 +37,7 @@ Feature: Users
     Given the following user:
     	| username | username          |
 	| password | password 	       |
-	| email    | email@example.com |
+	| email    | email@ufl.edu     |
     And I am signed in as an admin
     And I follow "Create Event"
     When I fill in "event_org_name" with "org"
@@ -64,7 +52,7 @@ Feature: Users
     Given the following user:
     	| username | username          |
 	| password | password 	       |
-	| email    | email@example.com |
+	| email    | email@ufl.edu     |
     And that user has 1 event
     And I am signed in as an admin
     And I am on the root path
@@ -78,12 +66,12 @@ Feature: Users
     Given the following user:
     	| username | username          |
 	| password | password 	       |
-	| email    | email@example.com |
+	| email    | email@ufl.edu     |
     And that user has 1 event
     And the following user:
-    	| username | username          |
-	| password | password 	       |
-	| email    | email2@example.com |
+    	| username | username2          |
+	| password | password 	        |
+	| email    | email2@ufl.edu     |
     And that user has 1 wings_event
     And I am signed in as an admin
     When I follow "username"
