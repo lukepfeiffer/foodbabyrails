@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
 
   private
   def confirm_token
-    require 'pry'; binding.pry
     self.confirmation_token = SecureRandom.urlsafe_base64.to_s
   end
 end
