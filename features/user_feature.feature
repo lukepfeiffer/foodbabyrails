@@ -32,21 +32,6 @@ Feature: Users
     When I follow "Delete"
     Then I should see "Deleted Event!"
     And I should not see "E2120"
-
-  Scenario: User creates event
-    Given the following user:
-    	| username | username          |
-	| password | password 	       |
-	| email    | email@ufl.edu     |
-    And I am signed in as an admin
-    And I follow "Create Event"
-    When I fill in "event_org_name" with "org"
-    And I fill in "searchTextField" with "Reitz Union Hotel, Museum Road, Gainesville, FL, USA"
-    And I fill in "event_building_name" with "build"
-    And I press "Save"
-    Then I should see "Created event!"
-    And I should see "org"
-    And I should see "build"
 	
   Scenario: User edits event
     Given the following user:
@@ -74,7 +59,7 @@ Feature: Users
 	| email    | email2@ufl.edu     |
     And that user has 1 wings_event
     And I am signed in as an admin
-    When I follow "username"
+    When I follow "My Events"
     Then I should see "Pizza"
     And I should see "E2120"
     And I should not see "Wings"

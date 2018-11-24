@@ -3,6 +3,9 @@ class EventsController < ApplicationController
     @restrictions = ['None', 'Vegetarian', 'Vegan']
     @events = query_events(params)
     @types = Event.distinct.pluck(:food_type)
+    if @types.empty?
+      @types = ['Other', 'Pizza', 'Wings']
+    end
   end
 
   def render_details

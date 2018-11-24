@@ -34,6 +34,12 @@ Given /^that ([^"]*) has (\d+) ([^"]*)$/ do |parent, count, child|
   end
 end
 
+Given /^that the last user has a past_event$/ do
+  fab = Fabricate.build(:past_event)
+  fab.user_id = User.last.id
+  fab.save(validation: false)
+end
+
 Given /^(?:that|those) (.*) belongs? to that (.*)$/ do |children, parent|
   with_ivars Fabrication::Cucumber::StepFabricator.new(parent) do |fab|
     fab.has_many(children)
