@@ -8,7 +8,7 @@ Feature: Users
     And I fill in "Password confirmation" with "password"
     And I fill in "Username" with "username"
     And I press "Register"
-    Then I should see "Created and signed in!"
+    Then I should see "You have created an account, an email was sent to confirm your status."
 
   Scenario: User Signs In
     Given the following user:
