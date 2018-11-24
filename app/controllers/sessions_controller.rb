@@ -8,11 +8,11 @@ class SessionsController < ApplicationController
         redirect_to root_path
       else
         flash[:warning] = "You must confirm your account."
-        redirect_to log_in_path
+        redirect_to sign_in_path
       end
     else
       flash[:danger] = "Email or password did not match!"
-      redirect_to log_in_path
+      redirect_to sign_in_path
     end
   end
 

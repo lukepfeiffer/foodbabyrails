@@ -25,12 +25,14 @@ class UsersController < ApplicationController
   end
 
   def confirmation
-    if params[:user_id].present?
-      User.find(params[:user_id]).update(is_confirmed: true)
+    user = User.find_by_confirmation_token(params[:id])
+
+    if user
+      user.email_activate
       flash[:success] = "Confirmed successfully! Sign in"
-      redirect_to log_in_path
-    else 
-      flash[:danger] = "This user does not exist."
+      redirect_to sign_in_path
+    else
+      flash[:danger] = "Unable to find matching user..."
       redirect_to root_path
     end
   end

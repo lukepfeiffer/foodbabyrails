@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_11_23_232453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_confirmed"
+    t.string "confirmation_token"
   end
 
   create_table "votes", force: :cascade do |t|

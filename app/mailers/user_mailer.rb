@@ -3,7 +3,6 @@ class UserMailer < ApplicationMailer
 
   def confirmation_email
     @user = params[:user]
-    @url  = "/confirmation"
     mail(to: @user.email, subject: 'Account confirmation')
   end
 end
