@@ -16,28 +16,31 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(event_params)
     if !current_user.present?
       flash[:danger] = "You were not signed in."
       redirect_to root_path
     end
-
-    if !params[:time].present?
-      event.time = Time.now + 1.hour
-    end
-
-    if !params[:date].present?
-      event.date = Date.tomorrow
-    end
-
+    event = Event.new(event_params)
     event.user_id = current_user.id
 
     if event.save
       flash[:success] = "Created event!"
+      redirect_to root_path
     else
-      flash[:danger] = "Event was not created...."
+      error_messages = ""
+
+      event.errors.each do |attribute, message|
+	if attribute.to_s.include?("_")
+	  updated_name = attribute.to_s.split("_").join(" ").capitalize
+          error_messages += "#{updated_name}: #{message}, "
+        else
+          error_messages += "#{attribute.capitalize}: #{message}, "
+        end
+      end
+
+      flash[:danger] = error_messages
+      redirect_to new_event_path
     end
-    redirect_to events_path
   end
 
   def edit
