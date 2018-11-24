@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   get "/render_details", to: "events#render_details"
   get "/upvote", to: "votes#upvote"
-  get "/confirm", to: "users#confirmation"
+  get "/confirmation", to: "users#confirmation"
 end
