@@ -41,8 +41,10 @@ class EventsController < ApplicationController
         end
       end
 
+
+      @event = event
       flash[:danger] = error_messages
-      redirect_to new_event_path
+      render :new
     end
   end
 
@@ -65,8 +67,9 @@ class EventsController < ApplicationController
 
     event.update(event_params)
 
+    @event = event
     flash[:success] = "Update event!"
-    redirect_to events_path
+    render :edit
   end
 
   def search

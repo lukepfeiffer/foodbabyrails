@@ -15,8 +15,10 @@ class UsersController < ApplicationController
       user.errors.each do |attribute, message|
         error_messages += "#{attribute.capitalize}: #{message}, "
       end
+
+      @user = user
       flash[:danger] = error_messages
-      redirect_to new_user_path
+      render :new
     end
   end
 
